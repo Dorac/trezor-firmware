@@ -8,6 +8,7 @@ class Device:
     def __init__(self, uhub_location, device_port):
         self.uhub_location = uhub_location
         self.device_port = device_port
+        run("uhubctl --version", shell=True)
 
     @staticmethod
     def log(msg):
@@ -44,7 +45,7 @@ class Device:
             shell=True,
             check=True,
         )
-        self.wait(3)
+        self.wait(5)
 
     def power_off(self):
         self.now()
@@ -56,7 +57,7 @@ class Device:
             shell=True,
             check=True,
         )
-        self.wait(3)
+        self.wait(5)
 
     def touch(self, location, action):
         raise NotImplementedError
